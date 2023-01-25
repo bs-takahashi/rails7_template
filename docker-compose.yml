@@ -9,7 +9,7 @@ services:
       MYSQL_ROOT_PASSWORD: passw0rd
       MYSQL_DATABASE: myapp_development
     ports:
-      - "3306:3306"
+      - "3356:3306"
 
   web:
     build: .
@@ -19,6 +19,6 @@ services:
     volumes:
       - .:/myapp
     ports:
-      - "3000:3000"
+      - "3050:3000"
     depends_on:
       - db

@@ -77,7 +77,7 @@ default: &default
 ## コンテナの起動とDBの作成
 
 ```
-$ docker-compuse up -d
+$ docker-compose up -d
 $ docker-compose exec web rails db:create
 ```
 
