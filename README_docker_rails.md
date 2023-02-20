@@ -24,7 +24,7 @@
 
 ### Railsアプリの生成
 
-    $ docker-compose run web rails new . --no-deps --force --database=mysql
+    $ docker-compose run app rails new . --no-deps --force --database=mysql
 
 上記コマンドでrails newが実行されアプリ構築に必要なファイルが生成される。なお、`rails new`コマンドのforceオプションはGemfileを上書きOKとするオプション。
 
@@ -78,11 +78,61 @@ default: &default
 
 ```
 $ docker-compose up -d
-$ docker-compose exec web rails db:create
+$ docker-compose exec app rails db:create
 ```
 
+## Boostrapの導入方法
 
-## Bootstrapの導入
+### JS関連の設定
+
+#### 1. Bootstrap用のJSを読み込む
+
+appコンテナ内で以下のコマンドを実行する。
+
+```
+$ docker-compose exec app bash
+> bin/importmap pin bootstrap
+```
+
+上記を実行すると、`config/importmap.rb`に以下の2行が追加される。
+
+```
+pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.2.3/dist/js/bootstrap.esm.js"
+pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.6/lib/index.js"
+
+```
+
+### 2. application.jsにエントリーを追加
+
+`app/javascript/application.js` に下記の記述を追加する
+
+```
+import "boostrap"
+```
+
+### CSS関連の設定
+
+#### 1. GemfileでのBootstrapの追加
+
+Gemfileに以下の記述を追加する
+
+```
+gem 'bootstrap', '~> 5.1.3'
+```
+
+その後、`bundle install`を実行
+
+#### 2. SCSSファイルの編集
+
+`app/assets/stylesheets/application.css` を `application.scss` に変更し以下の記述を追加
+
+```
+import "bootstrap"
+```
+
+## Bootstrapの導入（誤った手順）
+
+以下の方法で導入すると、importmapsとcssbuilding-railsが競合するのか、Stimulusが正常に動作しないという問題があるので、この手順は実行しないほうがよい。
 
 ### 1. Gemfileに以下を追加する。
 
