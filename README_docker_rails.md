@@ -81,7 +81,7 @@ $ docker-compose up -d
 $ docker-compose exec app rails db:create
 ```
 
-## Boostrapの導入方法
+## Bootstrapの導入方法
 
 ### JS関連の設定
 
@@ -107,7 +107,7 @@ pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.6/lib/inde
 `app/javascript/application.js` に下記の記述を追加する
 
 ```
-import "boostrap"
+import "bootstrap"
 ```
 
 ### CSS関連の設定
@@ -127,8 +127,13 @@ gem 'bootstrap', '~> 5.1.3'
 `app/assets/stylesheets/application.css` を `application.scss` に変更し以下の記述を追加
 
 ```
-import "bootstrap"
+@import "bootstrap";
 ```
+
+参考リンク
+
+- [Simple way how to use Bootstrap 5 in Rails 7 \- importmaps & sprockets](https://blog.eq8.eu/til/how-to-use-bootstrap-5-in-rails-7.html)
+
 
 ## Bootstrapの導入（誤った手順）
 
