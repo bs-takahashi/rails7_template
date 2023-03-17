@@ -124,10 +124,12 @@ gem 'bootstrap', '~> 5.1.3'
 
 #### 2. SCSSファイルの編集
 
-`app/assets/stylesheets/application.css` を `application.scss` に変更し以下の記述を追加
+`app/assets/stylesheets/application.css` を `application.scss` に変更し以下の記述を追加する。
+なお、2行目はBootstrapアイコンを利用できるようにするもの。
 
 ```
 @import "bootstrap";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
 ```
 
 参考リンク
