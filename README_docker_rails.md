@@ -102,6 +102,12 @@ pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.6/lib/inde
 
 ```
 
+ただし、ga.jspm.ioからのPopperが動作しないので、以下のようにunpkg.comからロードするように書き換える。（[参考リンク](https://blog.eq8.eu/til/how-to-use-bootstrap-5-in-rails-7.html)）
+
+```
+pin "@popperjs/core", to: "https://unpkg.com/@popperjs/core@2.11.2/dist/esm/index.js"
+```
+
 ### 2. application.jsにエントリーを追加
 
 `app/javascript/application.js` に下記の記述を追加する
